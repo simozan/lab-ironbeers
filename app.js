@@ -12,6 +12,22 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get("/beers", async (req, res) => {
+  const response = await punkAPI.getBeers()
+  console.log(response);
+  res.render("beers", { response });
+
+})
+
+app.get("/random-beer", async (req, res) => {
+  const response = await punkAPI.getRandom()
+  console.log(response);
+  res.render("random-beer", { response });
+
+})
+
+
+
 // Register the location for handlebars partials here:
 
 // ...
